@@ -1,9 +1,6 @@
 package com.landvibe.reviewtest.diary
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.landvibe.reviewtest.diary.Diary
 
 @Dao
@@ -40,7 +37,7 @@ interface DiaryDao {
     /*
         Memo 모델을 파라미터로 호출하면 추가 된다
      */
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(diary: Diary)
 
     /*

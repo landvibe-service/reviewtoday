@@ -16,12 +16,12 @@ class MainActivity : AppCompatActivity() {
 
         insertTestMemo()
         setupRecyclerView()
-        loadListAndApplyToRecyclerView()
     }
 
     //앱이 화면에 다시 보여질때(홈버튼을 눌렀다가 다시 보여지거나 다른 화면 갔다 온 경우)
     override fun onResume() {
         super.onResume()
+        loadListAndApplyToRecyclerView()
     }
 
     //화면이 아예 사라질 때(finish)
@@ -55,3 +55,5 @@ class MainActivity : AppCompatActivity() {
         main_recycler.layoutManager = LinearLayoutManager(this)
     }
 }
+
+//detail / modify / create
