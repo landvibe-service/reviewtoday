@@ -2,6 +2,7 @@ package com.landvibe.reviewtest.diary
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 /*
     Room에서 사용하는 모델 - 이렇게 하면 디비에 테이블이 생성되고 사용할 수 있다.

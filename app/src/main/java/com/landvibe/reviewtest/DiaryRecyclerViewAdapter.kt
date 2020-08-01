@@ -1,12 +1,15 @@
 package com.landvibe.reviewtest
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.landvibe.reviewtest.diary.Diary
 import kotlinx.android.synthetic.main.list_diary.view.*
+import android.widget.TextView
 
 class DiaryRecyclerViewAdapter (
     var items: MutableList<Diary> = mutableListOf()
@@ -28,9 +31,16 @@ class DiaryRecyclerViewAdapter (
         val item = items[position]
         with(holder.itemView){
             list_diary_text_title.text = item.title
+            list_diary_text_date.text = item.date
             holder.itemView.setOnClickListener {
                 context.startActivity(Intent(context, DiaryDetailActivity::class.java).putExtra("id", item.id))
             }
+            //길게 눌렀을때
+            holder.itemView.setOnLongClickListener {
+                //showSettingPopup()
+                true
+            }
         }
     }
+
 }

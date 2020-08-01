@@ -3,8 +3,10 @@ package com.landvibe.reviewtest.common
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
 import com.landvibe.reviewtest.diary.Diary
 import com.landvibe.reviewtest.diary.DiaryDao
+import java.util.*
 
 
 /*
@@ -28,5 +30,27 @@ abstract class AppDatabase : RoomDatabase() {
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
+    }
+
+    class Converters {
+        @TypeConverter
+        fun fromTimestamp(value: Long): Date {
+            return Date(value)
+        }
+
+        @TypeConverter
+        fun dateToTimestamp(date: Date): Long {
+            return date.time
+        }
+
+        @TypeConverter
+        fun listToStrings(list : List<String>): String {
+            return list.joinToString("/")
+        }
+
+        @TypeConverter
+        fun stringsToList(string: String): List<String> {
+            return string.split("/")
+        }
     }
 }

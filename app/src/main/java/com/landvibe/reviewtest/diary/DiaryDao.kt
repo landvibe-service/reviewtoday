@@ -46,4 +46,5 @@ interface DiaryDao {
      */
     @Delete
     fun delete(diary: Diary)
+
 }

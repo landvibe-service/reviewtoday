@@ -1,8 +1,10 @@
 package com.landvibe.reviewtest
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.landvibe.reviewtest.common.AppDatabase
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    //상태 불러오기
     private fun loadListAndApplyToRecyclerView() {
         val diaryList = AppDatabase.instance.diaryDao().getAll()
         adapter.items.clear()
