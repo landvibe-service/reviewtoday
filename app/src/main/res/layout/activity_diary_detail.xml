@@ -88,6 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
+        android:background="#FFFFFF"
         android:gravity="center">
 
         <EditText
@@ -114,12 +115,11 @@
         android:layout_height="0dip"
         android:layout_gravity="center"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:gravity="center">
 
         <EditText
             android:id="@+id/edit_body"
-            android:inputType="textMultiLine"
-            android:scrollbars="vertical"
             android:layout_width="370dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -127,8 +127,10 @@
             android:ems="10"
             android:gravity="clip_horizontal"
             android:hint="내용"
-            android:textSize="17sp"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
             android:scrollHorizontally="false"
+            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
@@ -139,27 +141,36 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center">
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="#FFFFFF">
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Button
+        <ImageButton
             android:id="@+id/bt_promise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="bottom"
-            android:text="" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:foreground="@drawable/star"
+            android:stateListAnimator="@null" />
 
-        <Button
+        <ImageButton
             android:id="@+id/bt_store"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="bottom"
-            android:text="저장" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:foreground="@drawable/write_store"
+            android:stateListAnimator="@null" />
     </LinearLayout>
 
 </LinearLayout>

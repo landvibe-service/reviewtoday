@@ -1,16 +1,21 @@
 package com.landvibe.reviewtest
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import com.landvibe.reviewtest.common.AppDatabase
 import com.landvibe.reviewtest.diary.Diary
 import kotlinx.android.synthetic.main.activity_diary_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_promise.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -25,6 +30,7 @@ class DiaryDetailActivity : AppCompatActivity() {
         loadDiary()
         setupToolbarWrite()
         setupListener()
+        setupAlertDialog()
     }
 //이과는 0부터 시작한다. id를 생성할때. 0을 안쓰긴해 ,,, 0
     /*
@@ -74,6 +80,7 @@ class DiaryDetailActivity : AppCompatActivity() {
             val id  = intent.getIntExtra("id", 0)
             val title = edit_title.text.toString()
             val contents = edit_body.text.toString()
+            //val promise = dialog_edit.text.toString()
             val now = LocalDate.now()
             val date = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"))
             val diary :Diary = Diary(id, date, title, contents)
@@ -103,6 +110,22 @@ class DiaryDetailActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    private fun setupAlertDialog(){
+        bt_promise.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("오늘의 다짐")
+                .setMessage("")
+                .setView(dialog_edit)
+                .setPositiveButton("확인") { _, _ ->
+                    bt_promise.setBackgroundResource(R.drawable.star2)
+                    Toast.makeText(this, "좋은 다짐입니다 :)", Toast.LENGTH_SHORT).show()
+                }.setNegativeButton("취소") { _, _ ->
+                    Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
+                }.show()
         }
     }
 }
