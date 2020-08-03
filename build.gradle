@@ -18,6 +18,12 @@ allprojects {
     repositories {
         google()
         jcenter()
+        // v7 라이브러리 설정 위해 추가
+
+        maven{
+            url 'http://maven.google.com'
+        }
+
     }
 }
 

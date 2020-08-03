@@ -4,10 +4,13 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import com.landvibe.reviewtest.common.AppDatabase
 import com.landvibe.reviewtest.diary.Diary
 import kotlinx.android.synthetic.main.activity_diary_detail.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -20,9 +23,8 @@ class DiaryDetailActivity : AppCompatActivity() {
 
         loadDate()
         loadDiary()
+        setupToolbarWrite()
         setupListener()
-        backListener()
-        deleteListener()
     }
 //이과는 0부터 시작한다. id를 생성할때. 0을 안쓰긴해 ,,, 0
     /*
@@ -45,6 +47,7 @@ class DiaryDetailActivity : AppCompatActivity() {
         edit_title.setText(diary.title)
         edit_body.setText(diary.contents)
     }
+    /*
     //뒤로가기
     private fun backListener(){
         bt_back.setOnClickListener {
@@ -53,6 +56,7 @@ class DiaryDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    //삭제
     private fun deleteListener(){
         bt_delete.setOnClickListener {
             val id = intent.getIntExtra("id", 0)
@@ -61,6 +65,8 @@ class DiaryDetailActivity : AppCompatActivity() {
             finish()
         }
     }
+    */
+
     //저장
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupListener(){
@@ -73,6 +79,30 @@ class DiaryDetailActivity : AppCompatActivity() {
             val diary :Diary = Diary(id, date, title, contents)
             AppDatabase.instance.diaryDao().insert(diary)
             finish()
+        }
+    }
+
+    //툴바
+    private fun setupToolbarWrite(){
+        setSupportActionBar(main_write_toolbar)
+        val ab = supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_write_top, menu)
+        return true
+        //return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item?.itemId){
+            R.id.menu_write_delete->{
+                val id = intent.getIntExtra("id", 0)
+                val diary = AppDatabase.instance.diaryDao().get(id)
+                AppDatabase.instance.diaryDao().delete(diary)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

@@ -2,12 +2,17 @@ package com.landvibe.reviewtest
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.landvibe.reviewtest.common.AppDatabase
 import kotlinx.android.synthetic.main.activity_main.*
+//import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: DiaryRecyclerViewAdapter
@@ -16,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        insertTestMemo()
+        setupToolbar()
         setupRecyclerView()
     }
 
@@ -36,6 +41,34 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
+
+    //툴바
+    private fun setupToolbar(){
+        setSupportActionBar(main_toolbar)
+        val ab = supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_top, menu)
+        return true
+        //return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item?.itemId){
+            R.id.menu_add->{
+                val intent = Intent(this, DiaryDetailActivity::class.java)
+                intent.putExtra("id", 0)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_delete->{
+                super.onOptionsItemSelected(item)
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    //추가버튼
+    /*
     private fun insertTestMemo() {
         button_list_add.setOnClickListener {
             val intent = Intent(this, DiaryDetailActivity::class.java)
@@ -43,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    */
+
     //상태 불러오기
     private fun loadListAndApplyToRecyclerView() {
         val diaryList = AppDatabase.instance.diaryDao().getAll()

@@ -6,7 +6,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DiaryDetailActivity">
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
 
+        android:id="@+id/main_write_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/text_write_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="오늘의 하루"
+            android:textSize="17sp" />
+    </androidx.appcompat.widget.Toolbar>
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -40,10 +60,10 @@
             app:layout_constraintVertical_bias="0.004" />
 
     </LinearLayout>
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -52,7 +72,7 @@
             android:id="@+id/text_date"
             android:layout_width="180dp"
             android:layout_height="30dp"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="2000년 00월 00일"
             android:textSize="17sp"
@@ -106,7 +126,7 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="clip_horizontal"
-            android:hint="본문"
+            android:hint="내용"
             android:textSize="17sp"
             android:scrollHorizontally="false"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,6 +146,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/bt_promise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="" />
 
         <Button
             android:id="@+id/bt_store"
