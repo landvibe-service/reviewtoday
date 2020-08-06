@@ -1,6 +1,7 @@
 package com.landvibe.reviewtest
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.landvibe.reviewtest.diary.Diary
 import kotlinx.android.synthetic.main.list_diary.view.*
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
+import com.landvibe.reviewtest.common.AppDatabase
+import kotlinx.android.synthetic.main.activity_diary_detail.*
+import kotlinx.android.synthetic.main.activity_diary_detail.view.*
+import kotlinx.android.synthetic.main.dialog_promise.view.*
 
 class DiaryRecyclerViewAdapter (
     var items: MutableList<Diary> = mutableListOf()
@@ -37,7 +43,21 @@ class DiaryRecyclerViewAdapter (
             }
             //길게 눌렀을때
             holder.itemView.setOnLongClickListener {
-                //showSettingPopup()
+                androidx.appcompat.app.AlertDialog.Builder(context)
+                    .setTitle("삭제하시겠습니까?")
+                    .setMessage("삭제된 일기 및 다짐은 복구할 수 없습니다.")
+                    .setPositiveButton("예") { _, _ ->
+                        val diary = AppDatabase.instance.diaryDao().get(item.id)
+                        AppDatabase.instance.diaryDao().delete(diary)
+                        val diaryList = AppDatabase.instance.diaryDao().getAll()
+                        items.clear()
+                        items.addAll(diaryList)
+                        notifyDataSetChanged()
+
+                        Toast.makeText(context,"삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                    }.setNegativeButton("아니오") { _, _ ->
+                        Toast.makeText(context, "취소", Toast.LENGTH_SHORT).show()
+                    }.show()
                 true
             }
         }
