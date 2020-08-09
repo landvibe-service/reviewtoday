@@ -59,7 +59,7 @@ class DiaryRecyclerViewAdapter (
                         AppDatabase.instance.diaryDao().delete(diary)
                         if(diary.promise.isNotEmpty()){
                             val promiseDb = AppDatabase.instance.promiseDao().get(item.id)
-                            AppDatabase.instance.promiseDao().delete(promiseDb)
+                            promiseDb?.let { it1 -> AppDatabase.instance.promiseDao().delete(it1) }
                         }
                         val diaryList = AppDatabase.instance.diaryDao().getAll()
                         items.clear()

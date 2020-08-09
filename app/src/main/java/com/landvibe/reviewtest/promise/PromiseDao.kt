@@ -31,7 +31,7 @@ interface PromiseDao {
      */
 
     @Query("SELECT * FROM promise WHERE id = :id")
-    fun get(id: Int): Promise
+    fun get(id: Int): Promise?
 
     /*
         Memo 모델을 파라미터로 호출하면 추가 된다
