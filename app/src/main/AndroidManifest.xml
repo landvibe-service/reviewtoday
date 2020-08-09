@@ -20,6 +20,8 @@
         <activity
             android:name=".DiaryDetailActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".PromiseListActivity" />
     </application>
 
 </manifest>

@@ -16,6 +16,8 @@ import com.landvibe.reviewtest.common.AppDatabase
 import kotlinx.android.synthetic.main.activity_diary_detail.*
 import kotlinx.android.synthetic.main.activity_diary_detail.view.*
 import kotlinx.android.synthetic.main.dialog_promise.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DiaryRecyclerViewAdapter (
     var items: MutableList<Diary> = mutableListOf()
@@ -36,8 +38,12 @@ class DiaryRecyclerViewAdapter (
     override fun onBindViewHolder(holder: DiaryRecyclerViewHolder, position: Int) {
         val item = items[position]
         with(holder.itemView){
+            val time = Date(item.date)
+            val mFormat = SimpleDateFormat("yyyy年 MM月 dd日")
+            val date: String = mFormat.format(time)
+
             list_diary_text_title.text = item.title
-            list_diary_text_date.text = item.date
+            list_diary_text_date.text = date
             if(item.promise.isNotEmpty())
                 list_diary_image.setImageResource(R.drawable.square2)
             holder.itemView.setOnClickListener {
@@ -47,10 +53,14 @@ class DiaryRecyclerViewAdapter (
             holder.itemView.setOnLongClickListener {
                 androidx.appcompat.app.AlertDialog.Builder(context)
                     .setTitle("삭제하시겠습니까?")
-                    .setMessage("삭제된 일기 및 다짐은 복구할 수 없습니다.")
+                    .setMessage("삭제된 일기는 복구할 수 없습니다.")
                     .setPositiveButton("예") { _, _ ->
                         val diary = AppDatabase.instance.diaryDao().get(item.id)
                         AppDatabase.instance.diaryDao().delete(diary)
+                        if(diary.promise.isNotEmpty()){
+                            val promiseDb = AppDatabase.instance.promiseDao().get(item.id)
+                            AppDatabase.instance.promiseDao().delete(promiseDb)
+                        }
                         val diaryList = AppDatabase.instance.diaryDao().getAll()
                         items.clear()
                         items.addAll(diaryList)

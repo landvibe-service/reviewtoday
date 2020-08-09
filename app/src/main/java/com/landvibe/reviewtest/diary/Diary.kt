@@ -14,7 +14,7 @@ import java.util.*
 data class Diary(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val date: String,
+    val date: Long,
     val title: String,
     val contents: String,
     val promise: String
