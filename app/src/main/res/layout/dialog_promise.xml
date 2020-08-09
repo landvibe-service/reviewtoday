@@ -42,7 +42,8 @@
             android:gravity="center"
             android:ems="10"
             android:hint="당신의 오늘의 다짐은 무엇인가요?"
-            android:inputType="textLongMessage" />
+            android:inputType="textLongMessage"
+            android:text=""/>
     </LinearLayout>
 
 </LinearLayout>

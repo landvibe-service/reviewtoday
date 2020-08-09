@@ -38,6 +38,8 @@ class DiaryRecyclerViewAdapter (
         with(holder.itemView){
             list_diary_text_title.text = item.title
             list_diary_text_date.text = item.date
+            if(item.promise.isNotEmpty())
+                list_diary_image.setImageResource(R.drawable.square2)
             holder.itemView.setOnClickListener {
                 context.startActivity(Intent(context, DiaryDetailActivity::class.java).putExtra("id", item.id))
             }

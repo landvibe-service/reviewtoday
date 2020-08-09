@@ -16,13 +16,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: DiaryRecyclerViewAdapter
-
+    private var backBtnTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupToolbar()
         setupRecyclerView()
+        insertPlusDiary()
     }
 
     //앱이 화면에 다시 보여질때(홈버튼을 눌렀다가 다시 보여지거나 다른 화면 갔다 온 경우)
@@ -41,6 +42,18 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    override fun onBackPressed() {
+        val curTime = System.currentTimeMillis()
+        val gapTime = curTime - backBtnTime
+        if(gapTime in 0..2000)
+            super.onBackPressed()
+        else{
+            backBtnTime = curTime
+            Toast.makeText(this, "앱을 종료하려면 한번 더 누르세요", Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
 
     //툴바
     private fun setupToolbar(){
@@ -55,28 +68,26 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item?.itemId){
-            R.id.menu_add->{
-                val intent = Intent(this, DiaryDetailActivity::class.java)
+            R.id.menu_promise_list->{
+                val intent = Intent(this, PromiseListActivity::class.java)
                 intent.putExtra("id", 0)
                 startActivity(intent)
                 true
             }
-            R.id.menu_delete->{
-                super.onOptionsItemSelected(item)
-            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     //추가버튼
-    /*
-    private fun insertTestMemo() {
-        button_list_add.setOnClickListener {
+    private fun insertPlusDiary() {
+        main_button_add.setOnClickListener {
             val intent = Intent(this, DiaryDetailActivity::class.java)
             intent.putExtra("id", 0)
             startActivity(intent)
         }
     }
-    */
+
 
     //상태 불러오기
     private fun loadListAndApplyToRecyclerView() {
@@ -92,5 +103,3 @@ class MainActivity : AppCompatActivity() {
         main_recycler.layoutManager = LinearLayoutManager(this)
     }
 }
-
-//detail / modify / create

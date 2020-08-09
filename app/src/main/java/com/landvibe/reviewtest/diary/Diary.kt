@@ -16,5 +16,6 @@ data class Diary(
     val id: Int,
     val date: String,
     val title: String,
-    val contents: String
+    val contents: String,
+    val promise: String
 )
