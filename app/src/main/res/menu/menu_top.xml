@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_promise_list"
-        android:icon="@drawable/list"
+        android:icon="@drawable/menu"
         android:title="add"
         app:showAsAction="ifRoom" />
 

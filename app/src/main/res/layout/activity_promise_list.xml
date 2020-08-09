@@ -41,7 +41,7 @@
         android:background="@color/colorWhite">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_recycler"
+            android:id="@+id/promise_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/list_promise"

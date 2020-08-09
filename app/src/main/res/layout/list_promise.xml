@@ -22,20 +22,18 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-
                 android:background="@color/colorWhite">
-
-
 
                 <TextView
                     android:id="@+id/list_promise_text"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="260dp"
+                    android:layout_height="18dp"
                     android:gravity="center_vertical"
                     android:text="나의 다짐"
                     android:textColor="#000000"
                     android:textSize="17sp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/bareunbatang"/>
 
 
             </LinearLayout>
@@ -49,11 +47,11 @@
                 <TextView
                     android:id="@+id/list_promise_text_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="16dp"
                     android:gravity="bottom"
                     android:text="2000年 00月 00日"
                     android:layout_marginLeft="20dp"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     />
             </LinearLayout>
 

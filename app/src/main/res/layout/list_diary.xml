@@ -21,13 +21,7 @@
             android:gravity="center"
             android:text="2000年 00月 00日"
             android:textSize="12sp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.142"/>
+            android:layout_marginTop="10dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,19 +36,20 @@
             android:layout_height="15dp"
             app:srcCompat="@drawable/square"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="27dp" />
         <View
-            android:layout_width="15dp"
+            android:layout_width="17dp"
             android:layout_height="0dip"/>
         <TextView
             android:id="@+id/list_diary_text_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="18dp"
             android:gravity="center_vertical"
             android:text="제목"
             android:layout_marginBottom="5dp"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:fontFamily="@font/bareunbatang"/>
 
 
     </LinearLayout>

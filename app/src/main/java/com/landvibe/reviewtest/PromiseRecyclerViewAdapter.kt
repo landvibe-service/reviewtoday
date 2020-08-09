@@ -16,7 +16,6 @@ import com.landvibe.reviewtest.common.AppDatabase
 import com.landvibe.reviewtest.promise.Promise
 import kotlinx.android.synthetic.main.activity_diary_detail.*
 import kotlinx.android.synthetic.main.activity_diary_detail.view.*
-import kotlinx.android.synthetic.main.dialog_promise.view.*
 import kotlinx.android.synthetic.main.list_promise.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -67,15 +66,11 @@ class PromiseRecyclerViewAdapter (
                         pDay = "1日"
                     else{
                         gap /= hour
-                        pDay = gap.toString()+"日"
+                        pDay = (gap+1).toString() + "日"
                     }
                 }
             }
             list_promise_date_gap.text = pDay
-
-            holder.itemView.setOnClickListener {
-                context.startActivity(Intent(context, DiaryDetailActivity::class.java).putExtra("id", item.id))
-            }
         }
     }
 

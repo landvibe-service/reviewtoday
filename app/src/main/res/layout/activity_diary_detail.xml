@@ -5,269 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context=".DiaryDetailActivity">
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_write_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="0dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+        android:background="@color/colorWhite">
+
         <TextView
             android:id="@+id/text_date"
-            android:layout_width="180dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="2000年 00月 00日"
-            android:textSize="15sp"
+            android:text="2000年 00月 00日0 00:00"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.992"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.072" />
+            android:textSize="15sp" />
     </androidx.appcompat.widget.Toolbar>
-<!--
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center">
-
-        <Button
-            android:id="@+id/bt_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="뒤로"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.004" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/bt_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="삭제"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.004" />
-
-    </LinearLayout>
--->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_gravity="center_vertical"
+        android:layout_height="20dp"/>
+    <EditText
+        android:id="@+id/edit_title"
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:layout_height="60dp"
         android:background="@color/colorWhite"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:ems="10"
+        android:hint="제목"
+        android:padding="10dp"
+        android:textSize="22sp"
+        android:maxLength="16"
+        android:fontFamily="@font/bareunbatang"/>
+
+    <EditText
+        android:id="@+id/edit_body"
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="내용"
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/bareunbatang"/>
+
 
     <LinearLayout
+        android:id="@+id/diary_detail_promise_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#FFFFFF"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/edit_title"
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:gravity="clip_horizontal"
-            android:hint="제목"
-            android:inputType="textPersonName"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.142" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_gravity="center"
-        android:layout_weight="1"
         android:background="#FFFFFF"
         android:gravity="center"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
-        android:windowSoftInputMode="stateHidden|adjustResize">
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/detail_none_promise"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/text_promise"
+            android:layout_width="370dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:visibility="visible"
-            android:scrollbars="vertical"
-            android:scrollHorizontally="false">
-            <EditText
-                android:id="@+id/edit_body"
-                android:layout_width="370dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:gravity="clip_horizontal"
-                android:hint="내용"
-                android:inputType="textMultiLine"
-                android:scrollbars="vertical"
-                android:scrollHorizontally="false"
-                android:textSize="17sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_title"
-                app:layout_constraintVertical_bias="0.326" />
-        </LinearLayout>
+            android:gravity="center_vertical"
+            android:background="@color/colorWhite"
+            android:padding="10dp"
+            android:text="오늘의 다짐"
+            android:fontFamily="@font/bareunbatang"
+            android:textSize="17sp" />
 
-
-        <LinearLayout
-            android:id="@+id/detail_promise"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/edit_promise"
+            android:layout_width="370dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:visibility="gone"
-            android:scrollbars="vertical"
-            android:scrollHorizontally="false">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="450dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF"
-                android:gravity="center">
-                <EditText
-                    android:id="@+id/edit_body2"
-                    android:layout_width="370dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:gravity="clip_horizontal"
-                    android:hint="내용"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:scrollHorizontally="false"
-                    android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.493"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_title"
-                    app:layout_constraintVertical_bias="0.326" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="#FFFFFF"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/text_promise"
-                    android:layout_width="370dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center_vertical"
-                    android:text="오늘의 다짐"
-                    android:textSize="17sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#FFFFFF"
-                android:gravity="center">
-                <EditText
-                    android:id="@+id/edit_promise"
-                    android:layout_width="370dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:gravity="clip_horizontal"
-                    android:hint="당신의 다짐을 작성해주세요."
-                    android:text=""
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:scrollHorizontally="false"
-                    android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.493"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_title"
-                    app:layout_constraintVertical_bias="0.326" />
-            </LinearLayout>
-        </LinearLayout>
+            android:background="@color/colorWhite"
+            android:ems="10"
+            android:gravity="clip_horizontal"
+            android:hint="당신의 다짐을 작성해주세요."
+            android:padding="10dp"
+            android:textSize="17sp"
+            android:maxLength="16"
+            android:fontFamily="@font/bareunbatang"/>
+    </LinearLayout>
 
-    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_gravity="center"
-        android:background="#FFFFFF">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/colorWhite"
+        android:paddingVertical="15dp">
         <ImageButton
             android:id="@+id/bt_promise"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#FFFFFF"
-            android:src="@drawable/write_store"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorWhite"
             android:foreground="@drawable/heart"
-            android:stateListAnimator="@null" />
+            android:src="@drawable/write_store" />
 
+        <View
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
         <ImageButton
             android:id="@+id/bt_store"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:tint="@color/colorLavender"
-            android:background="#FFFFFF"
-            android:src="@drawable/write_store"
-            android:foreground="@drawable/write_store"
-            android:stateListAnimator="@null" />
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginRight="30dp"
+            android:visibility="visible"
+            android:background="@color/colorWhite"
+            android:foreground="@drawable/save" />
     </LinearLayout>
 
 </LinearLayout>
