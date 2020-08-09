@@ -26,7 +26,7 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
     @RequiresApi(Build.VERSION_CODES.O)
     //val now: LocalDate = LocalDate.now()
     val now: Long = System.currentTimeMillis()
-    private var dayMode : Boolean = false
+    private var dayMode: Boolean = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     val time = Date(now)
@@ -91,50 +91,39 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
     private fun setupListener() {
         bt_promise.setOnClickListener {
             //alertDialog.show()
-            if(!mode) {
-                edit_body2.setText(edit_body.text.toString())
-                detail_none_promise.visibility = View.GONE
-                detail_promise.visibility = View.VISIBLE
+            if (!mode) {
+                diary_detail_promise_layout.visibility = View.VISIBLE
                 bt_promise.foreground = resources.getDrawable(R.drawable.heart2)
                 mode = true
-            }
-            else{
-                edit_body.setText(edit_body2.text.toString())
-                detail_none_promise.visibility = View.VISIBLE
-                detail_promise.visibility = View.GONE
+            } else {
+                diary_detail_promise_layout.visibility = View.GONE
                 bt_promise.foreground = resources.getDrawable(R.drawable.heart)
                 mode = false
             }
         }
 
         bt_store.setOnClickListener {
-            if(edit_body.text.toString().length >= edit_body2.text.toString().length)
-                edit_body2.setText(edit_body.text.toString())
-            else
-                edit_body.setText(edit_body2.text.toString())
             Toast.makeText(this, "일기가 저장되었습니다", Toast.LENGTH_SHORT).show()
             val id = intent.getIntExtra("id", 0)
             val title = edit_title.text.toString()
             val contents = edit_body.text.toString()
             val promise = edit_promise.text.toString()
 
-
             if (intent.getIntExtra("id", 0) == 0) {
-                val diary: Diary = Diary(id, now, title, contents, promise)
-                if(promise.isNotEmpty()){
+                val diary = Diary(id, now, title, contents, promise)
+                if (promise.isNotEmpty()) {
                     val promiseDb = Promise(id, now, promise)
                     AppDatabase.instance.promiseDao().insert(promiseDb)
                 }
                 AppDatabase.instance.diaryDao().insert(diary)
-            }
-            else{
+            } else {
                 val diaryDemo = AppDatabase.instance.diaryDao().get(id)
                 val promiseDemo = AppDatabase.instance.promiseDao().get(id)
                 val nowDate = diaryDemo.date
 
                 val diary: Diary = Diary(id, nowDate, title, contents, promise)
 
-                if(promise!=promiseDemo.promise){//수정
+                if (promise != promiseDemo?.promise) {//수정
                     val promiseDb = Promise(id, now, promise)
                     AppDatabase.instance.promiseDao().insert(promiseDb)
                 }
