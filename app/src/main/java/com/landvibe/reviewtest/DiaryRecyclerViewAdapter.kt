@@ -74,6 +74,7 @@ class DiaryRecyclerViewAdapter (
                 context.startActivity(Intent(context, DiaryDetailActivity::class.java).putExtra("id", item.id))
             }
             //길게 눌렀을때
+            /*
             holder.itemView.setOnLongClickListener {
                 androidx.appcompat.app.AlertDialog.Builder(context)
                     .setTitle("삭제하시겠습니까?")
@@ -100,6 +101,7 @@ class DiaryRecyclerViewAdapter (
                     }.show()
                 true
             }
+             */
         }
     }
 

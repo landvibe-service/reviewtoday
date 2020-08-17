@@ -26,7 +26,7 @@
             android:text="나의 다짐"
             android:textColor="#000000"
             android:textSize="17sp"
-            />
+            android:fontFamily="@font/bareunbatang" />
     </androidx.appcompat.widget.Toolbar>
 
 

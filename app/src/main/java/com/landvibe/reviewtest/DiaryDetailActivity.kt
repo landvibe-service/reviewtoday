@@ -101,35 +101,53 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
         }
 
         bt_store.setOnClickListener {
-            Toast.makeText(this, "일기가 저장되었습니다", Toast.LENGTH_SHORT).show()
-            val id = intent.getIntExtra("id", 0)
-            val title = edit_title.text.toString()
-            val contents = edit_body.text.toString()
-            val promise = edit_promise.text.toString()
+            if(edit_body.text.toString().isNotEmpty()||edit_promise.text.toString().isNotEmpty()) {
+                Toast.makeText(this, "일기가 저장되었습니다", Toast.LENGTH_SHORT).show()
+                val id = intent.getIntExtra("id", 0)
+                val title = edit_title.text.toString()
+                val contents = edit_body.text.toString()
+                val promise = edit_promise.text.toString()
 
-            if (intent.getIntExtra("id", 0) == 0) {
-                val diary = Diary(id, now, title, contents, promise)
-                if (promise.isNotEmpty()) {
-                    val promiseDb = Promise(id, now, promise)
-                    AppDatabase.instance.promiseDao().insert(promiseDb)
+                if (intent.getIntExtra("id", 0) == 0) {
+                    val diary = Diary(id, now, title, contents, promise)
+                    if (promise.isNotEmpty()) {
+                        val todayCal : Calendar = Calendar.getInstance()
+                        val today : Long = todayCal.timeInMillis/86400000
+
+                        val mFormat = SimpleDateFormat("yyyy年 MM月 dd日")
+                        val date: String = mFormat.format(todayCal.time)
+
+                        val promiseDb = Promise(id, today, date, promise)
+                        AppDatabase.instance.promiseDao().insert(promiseDb)
+                    }
+                    AppDatabase.instance.diaryDao().insert(diary)
+                } else {
+                    val diaryDemo = AppDatabase.instance.diaryDao().get(id)
+                    val promiseDemo = AppDatabase.instance.promiseDao().get(id)
+                    val nowDate = diaryDemo.date
+
+                    val diary: Diary = Diary(id, nowDate, title, contents, promise)
+
+                    if (promise != promiseDemo?.promise) {//수정
+                        val todayCal : Calendar = Calendar.getInstance()
+                        val today : Long = todayCal.timeInMillis/86400000
+
+                        val mFormat = SimpleDateFormat("yyyy年 MM月 dd日")
+                        val date: String = mFormat.format(todayCal.time)
+
+                        val promiseDb = Promise(id, today, date, promise)
+                        AppDatabase.instance.promiseDao().insert(promiseDb)
+                        if(promise.isNullOrEmpty())
+                            AppDatabase.instance.promiseDao().delete(promiseDb)
+                    }
+
+                    AppDatabase.instance.diaryDao().insert(diary)
                 }
-                AppDatabase.instance.diaryDao().insert(diary)
-            } else {
-                val diaryDemo = AppDatabase.instance.diaryDao().get(id)
-                val promiseDemo = AppDatabase.instance.promiseDao().get(id)
-                val nowDate = diaryDemo.date
 
-                val diary: Diary = Diary(id, nowDate, title, contents, promise)
-
-                if (promise != promiseDemo?.promise) {//수정
-                    val promiseDb = Promise(id, now, promise)
-                    AppDatabase.instance.promiseDao().insert(promiseDb)
-                }
-
-                AppDatabase.instance.diaryDao().insert(diary)
+                finish()
             }
-
-            finish()
+            else
+                Toast.makeText(this,"글을 작성해주세요", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -150,10 +168,15 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_write_delete -> {
-                val id = intent.getIntExtra("id", 0)
-                val diary = AppDatabase.instance.diaryDao().get(id)
-                AppDatabase.instance.diaryDao().delete(diary)
-                finish()
+                if (intent.getIntExtra("id", 0) == 0) {
+                    Toast.makeText(this, "글을 작성한 후 삭제해주세요", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    val id = intent.getIntExtra("id", 0)
+                    val diary = AppDatabase.instance.diaryDao().get(id)
+                    AppDatabase.instance.diaryDao().delete(diary)
+                    finish()
+                }
                 true
             }
             home -> {

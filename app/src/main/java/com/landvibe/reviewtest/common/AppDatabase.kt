@@ -20,7 +20,7 @@ import java.util.*
     companion object, instance - 데이터 베이스를 접근을 한곳으로 하기 위한 오브젝트 생성
     Room.databaseBuilder - context와 db이름 설정 들을 추가
  */
-@Database(entities = [Diary::class, Promise::class], version =11)
+@Database(entities = [Diary::class, Promise::class], version =12)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun diaryDao(): DiaryDao
     abstract fun promiseDao(): PromiseDao

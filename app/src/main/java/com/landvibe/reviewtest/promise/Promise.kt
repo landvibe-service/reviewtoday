@@ -14,6 +14,7 @@ import java.util.*
 data class Promise(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val date: Long,
+    val time: Long,
+    val date: String,
     val promise: String
 )

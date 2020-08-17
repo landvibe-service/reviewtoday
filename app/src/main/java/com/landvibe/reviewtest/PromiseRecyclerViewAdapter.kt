@@ -40,36 +40,21 @@ class PromiseRecyclerViewAdapter (
     override fun getItemCount(): Int {
         return items.size
     }
-    //레이아웃 값 할당, 클릭할 시 어떤 일 할 지
+
+
     override fun onBindViewHolder(holder: PromiseRecyclerViewHolder, position: Int) {
         val item = items[position]
         with(holder.itemView){
-            val time = Date(item.date)
-            val mFormat = SimpleDateFormat("yyyy年 MM月 dd日")
-            val date: String = mFormat.format(time)
+            list_promise_text_date.text = item.date
+
             list_promise_text.text = item.promise
-            list_promise_text_date.text = date
 
-            val current = System.currentTimeMillis()
-            var gap = (current - item.date)/1000
-            var pDay = "1日"
+            val todayCal : Calendar = Calendar.getInstance()
+            val today : Long = todayCal.timeInMillis/86400000
 
-            if(gap < sec)
-                pDay = "1日"
-            else {
-                gap /= sec
-                if(gap < min)
-                    pDay = "1日"
-                else {
-                    gap /= min
-                    if(gap < hour)
-                        pDay = "1日"
-                    else{
-                        gap /= hour
-                        pDay = (gap+1).toString() + "日"
-                    }
-                }
-            }
+            val count = today - item.time + 1
+
+            val pDay = count.toString() + "日"
             list_promise_date_gap.text = pDay
         }
     }
