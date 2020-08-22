@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.landvibe.reviewtest.common.AppDatabase
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_promise_list.*
 
 class PromiseListActivity : AppCompatActivity() {
@@ -93,7 +92,7 @@ class PromiseListActivity : AppCompatActivity() {
                     if (dX > 0) {
                         //오른쪽으로 밀었을 때
                     } else {
-                        p.color = Color.parseColor("#FFE4E1") // alicblue
+                        p.color = Color.parseColor("#F5F5F5") // alicblue
                         val background = RectF(
                             itemView.right.toFloat() + dX, itemView.top.toFloat(),
                             itemView.right.toFloat(), itemView.bottom.toFloat()

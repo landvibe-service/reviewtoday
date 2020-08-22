@@ -15,8 +15,6 @@ import com.landvibe.reviewtest.common.AppDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import com.landvibe.reviewtest.DiaryRecyclerViewAdapter as DiaryRecyclerViewAdapter
 
-//import androidx.appcompat.widget.Toolbar
-
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: DiaryRecyclerViewAdapter
     private val p: Paint = Paint()
@@ -160,7 +158,7 @@ class MainActivity : AppCompatActivity() {
                     if (dX > 0) {
                         //오른쪽으로 밀었을 때
                     } else {
-                        p.color = Color.parseColor("#E6E6FA") // plum
+                        p.color = Color.parseColor("#F5F5F5") // plum
                         val background = RectF(
                             itemView.right.toFloat() + dX, itemView.top.toFloat(),
                             itemView.right.toFloat(), itemView.bottom.toFloat()

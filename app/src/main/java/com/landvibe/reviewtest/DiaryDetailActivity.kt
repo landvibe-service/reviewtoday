@@ -1,7 +1,6 @@
 package com.landvibe.reviewtest
 
 import android.R.id.home
-import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,14 +8,11 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import com.landvibe.reviewtest.common.AppDatabase
 import com.landvibe.reviewtest.diary.Diary
 import com.landvibe.reviewtest.promise.Promise
 import kotlinx.android.synthetic.main.activity_diary_detail.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -31,7 +27,7 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
     private val mFormat = SimpleDateFormat("yyyy年 MM月 dd日 HH:mm")
     private val date: String = mFormat.format(time)
 
-    private var mode: Boolean = false
+    private var mode: Boolean = true
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,20 +85,20 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
     private fun setupListener() {
         bt_promise.setOnClickListener {
             //alertDialog.show()
-            if (!mode) {
-                diary_detail_promise_layout.visibility = View.VISIBLE
-                bt_promise.foreground = resources.getDrawable(R.drawable.heart2)
-                mode = true
-            } else {
+            if (mode) {
                 diary_detail_promise_layout.visibility = View.GONE
                 bt_promise.foreground = resources.getDrawable(R.drawable.heart)
                 mode = false
+            } else {
+                diary_detail_promise_layout.visibility = View.VISIBLE
+                bt_promise.foreground = resources.getDrawable(R.drawable.heart2)
+                mode = true
             }
         }
 
         bt_store.setOnClickListener {
-            if(edit_body.text.toString().isNotEmpty()||edit_promise.text.toString().isNotEmpty()) {
-                Toast.makeText(this, "일기가 저장되었습니다", Toast.LENGTH_SHORT).show()
+            if((edit_body.text.toString().isNotEmpty()&&edit_title.text.toString().isNotEmpty())||edit_promise.text.toString().isNotEmpty()) {
+                Toast.makeText(this, "저장되었습니다", Toast.LENGTH_SHORT).show()
                 val id = intent.getIntExtra("id", 0)
                 val title = edit_title.text.toString()
                 val contents = edit_body.text.toString()
@@ -147,7 +143,7 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
                 finish()
             }
             else
-                Toast.makeText(this,"글을 작성해주세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"일기 또는 다짐을 작성해주세요", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -189,5 +185,3 @@ class DiaryDetailActivity : AppCompatActivity(), GestureDetector.OnDoubleTapList
 
 
 }
-
-//application - activity(화면) - fragment(화면) - view
