@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: DiaryRecyclerViewAdapter
     private val p: Paint = Paint()
     private var backBtnTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         insertPlusDiary()
         initSwipe()
+
     }
 
     //앱이 화면에 다시 보여질때(홈버튼을 눌렀다가 다시 보여지거나 다른 화면 갔다 온 경우)
@@ -98,6 +100,15 @@ class MainActivity : AppCompatActivity() {
         adapter.items.clear()
         adapter.items.addAll(diaryList)
         adapter.notifyDataSetChanged()
+
+        if(adapter.items.size == 0) {
+            empty_item.visibility=View.VISIBLE
+            main_recycler.visibility=View.GONE
+        }
+        else{
+            empty_item.visibility=View.GONE
+            main_recycler.visibility=View.VISIBLE
+        }
     }
 
     private fun setupRecyclerView() {

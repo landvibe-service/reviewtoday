@@ -105,23 +105,28 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../howwasyourday" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\App\AndroidStudioProjects\reviewToday-master2\app\src\main\res\font" />
+    <key name="android.template.-626507922">
+      <recent name="com.landvibe.reviewtest" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.landvibe.reviewtest" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\App\AndroidStudioProjects\reviewToday-master2\app\src\main\res\drawable-xxxhdpi" />
+      <recent name="C:\App\AndroidStudioProjects\reviewToday-master2\app\src\main\res\drawable-xxhdpi" />
       <recent name="C:\App\AndroidStudioProjects\reviewToday-master2\app\src\main\res\drawable" />
       <recent name="C:\App\AndroidStudioProjects\reviewToday-master\app\src\main\res\drawable" />
       <recent name="C:\App\AndroidStudioProjects\reviewToday-master\app\src\main\java\com\landvibe\reviewtest" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\App\AndroidStudioProjects\reviewToday-master2\app\src\main\res\font" />
     </key>
   </component>
   <component name="RunManager">
@@ -210,18 +215,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="174" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596991861631" />
-    <state x="883" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598116139861">
+    <state x="883" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598254231069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="883" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598116139861" />
+    <state x="883" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598254231069" />
     <state x="0" y="167" key="AndroidCreateResourceDirectoryDialog" timestamp="1596999239440">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="167" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1596999239440" />
-    <state x="488" y="204" key="AndroidCreateResourceFileDialog" timestamp="1596999480796">
+    <state x="488" y="204" key="AndroidCreateResourceFileDialog" timestamp="1598252623793">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="488" y="204" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1596999480796" />
+    <state x="488" y="204" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1598252623793" />
     <state x="242" y="225" key="AndroidCreateXmlResourceDialog" timestamp="1596387779560">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -254,14 +259,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596448621471" />
-    <state x="954" y="193" key="chooseDestDirectoryDialog" timestamp="1596997574079">
+    <state x="954" y="193" key="chooseDestDirectoryDialog" timestamp="1598251854180">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="954" y="193" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1596997574079" />
-    <state x="458" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1598108926003">
+    <state x="954" y="193" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1598251854180" />
+    <state x="458" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1598251222668">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="458" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1598108926003" />
+    <state x="458" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1598251222668" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1596974475720">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

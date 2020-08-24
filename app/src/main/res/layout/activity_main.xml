@@ -50,12 +50,24 @@
         android:orientation="horizontal"
         android:background="@color/colorWhite">
 
+        <TextView
+            android:id="@+id/empty_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bareunbatang"
+            android:gravity="center"
+            android:text="작성된 일기가 없습니다"
+            android:textColor="#707070"
+            android:textSize="15sp"
+            android:visibility="visible" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/list_diary"
-            android:background="@color/colorWhite"/>
+            android:background="@color/colorWhite"
+            android:visibility="gone"/>
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
